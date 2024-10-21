@@ -48,6 +48,8 @@
     pip install realesrgan
     ```
 5. For one click run
+    Create a new shortcut on your GFPGAN directory using the script given below:
+
     ```console
     # For Anaconda users
     C:\ProgramData\anaconda3\Scripts\activate.bat GFPGAN & cd\ & <your_drive_letter>: & cd <your_gfpgan_directory> & python web_interface_gfpgan.py
@@ -63,17 +65,23 @@ We take the v1.4 version.
 Download pre-trained models: [GFPGANv1.4.pth](https://github.com/TencentARC/GFPGAN/releases/download/v1.3.0/GFPGANv1.4.pth)
 
 ```bash
-wget https://github.com/TencentARC/GFPGAN/releases/download/v1.3.0/GFPGANv1.3.pth -P experiments/pretrained_models
+wget https://github.com/TencentARC/GFPGAN/releases/download/v1.3.0/GFPGANv1.4.pth -P experiments/pretrained_models
 ```
+**Web Inference!**
 
-**Inference!**
+```bash
+python web_interface_gfpgan.py
+```
+Go to [localhost:5000](http://127.0.0.1:5000)
+
+**Console Inference!**
 
 ```bash
 python inference_gfpgan.py -i Input -o Output -v 1.4 -s 2
 ```
 
 ```console
-Usage: python inference_gfpgan.py -i inputs/whole_imgs -o results -v 1.3 -s 2 [options]...
+Usage: python inference_gfpgan.py -i Input -o Output -v 1.4 -s 2 [options]...
 
   -h                   show this help
   -i input             Input image or folder. Default: inputs/whole_imgs

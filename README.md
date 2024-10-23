@@ -51,11 +51,16 @@
     Create a new shortcut on your GFPGAN directory using the script given below:
 
     ```console
-    # For Anaconda users
-    C:\ProgramData\anaconda3\Scripts\activate.bat GFPGAN & cd\ & <your_drive_letter>: & cd <your_gfpgan_directory> & python web_interface_gfpgan.py
+    @echo off
 
-    # For Miniconda users
-    C:\ProgramData\miniconda3\Scripts\activate.bat GFPGAN & cd\ & <your_drive_letter>: & cd <your_gfpgan_directory> & python web_interface_gfpgan.py    
+    :: Activate the conda environment for GFPGAN
+    CALL "C:\ProgramData\miniconda3\Scripts\activate.bat" GFPGAN
+
+    :: Navigate to the GFPGAN directory (Change path accroding to yourself)
+    cd /D C:\Users\<your_username>\Desktop\AI\GFPGAN
+    
+    :: Run the GFPGAN web interface script
+    python web_interface_gfpgan.py   
     ```
 
 ## :zap: Quick Inference

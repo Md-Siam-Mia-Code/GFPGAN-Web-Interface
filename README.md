@@ -32,14 +32,22 @@
 4. Install dependent packages
 
     ```bash
+    # Install Basicsr
     pip install basicsr
+
+    # Install Facexlib
     pip install facexlib
+
+    # Install Requirments
     pip install -r requirements.txt
+
+    # Setup
     python setup.py develop
+    # Install Real-ESRGAN
     pip install realesrgan
     ```
 5. For one click run
-    Create a new shortcut on your GFPGAN directory using the script given below:
+    Create a new GFPGAN.bat Batch File on your GFPGAN directory using the script given below:
 
     ```console
     @echo off

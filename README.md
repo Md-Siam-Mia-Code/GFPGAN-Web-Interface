@@ -56,7 +56,7 @@
     CALL "C:\ProgramData\miniconda3\Scripts\activate.bat" GFPGAN
 
     :: Navigate to the GFPGAN directory (Change path accroding to yourself)
-    cd /D C:\Users\<your_username>\Desktop\AI\GFPGAN
+    cd /D C:\Users\<your_username>\Desktop\AI\GFPGAN-Web-Interface
     
     :: Run the GFPGAN web interface script
     python web_interface_gfpgan.py   

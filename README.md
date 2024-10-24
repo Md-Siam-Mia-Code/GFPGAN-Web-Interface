@@ -26,7 +26,7 @@
 
     ```bash
     git clone https://github.com/Md-Siam-Mia-Code/GFPGAN-Web-Interface.git
-    cd GFPGAN
+    cd GFPGAN-Web-Interface
     ```
 
 4. Install dependent packages

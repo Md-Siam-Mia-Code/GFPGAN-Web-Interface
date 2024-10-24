@@ -32,6 +32,9 @@
 4. Install dependent packages
 
     ```bash
+    # Install Flask
+    pip install flask
+    
     # Install Basicsr
     pip install basicsr
 

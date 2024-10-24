@@ -25,7 +25,7 @@
 3. Clone repo
 
     ```bash
-    git clone https://github.com/TencentARC/GFPGAN.git
+    git clone https://github.com/Md-Siam-Mia-Code/GFPGAN-Web-Interface.git
     cd GFPGAN
     ```
 

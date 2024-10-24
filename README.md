@@ -33,12 +33,9 @@
 
     ```bash
     pip install basicsr
-
     pip install facexlib
-
     pip install -r requirements.txt
     python setup.py develop
-
     pip install realesrgan
     ```
 5. For one click run

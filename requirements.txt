@@ -1,0 +1,16 @@
+Flask
+Werkzeug
+opencv-python
+torch
+torchvision
+basicsr
+gfpgan
+realesrgan
+facexlib
+lmdb
+numpy
+pyyaml
+scipy
+tb-nightly
+tqdm
+yapf

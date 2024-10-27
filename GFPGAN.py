@@ -81,6 +81,16 @@ def index():
                 # Save output image
                 imwrite(output, output_path)
 
+                # Add image preview for restored image with download button
+                restored_previews += f"""
+                    <div class="image-container">
+                        <img src="/output/Enhanced_{os.path.splitext(filename)[0]}.png" class="preview-image">
+                        <a href="/output/Enhanced_{os.path.splitext(filename)[0]}.png" download>
+                            <div class="download"><button class="custom-file-upload">Download</button></div>
+                        </a>
+                    </div>
+                """
+
                 # Add image preview for uploaded image from server input folder
                 image_previews += f"""
                     <div class="image-container" id="uploaded-{filename}">
@@ -89,16 +99,6 @@ def index():
                             <div class="progress-bar" id="progress-bar-{filename}"></div>
                         </div>
                         <div class="remove"><button class="remove-button custom-file-upload" onclick="removeImage('{filename}')">Remove</button></div>
-                    </div>
-                """
-
-                # Add image preview for restored image with download button
-                restored_previews += f"""
-                    <div class="image-container">
-                        <img src="/output/Enhanced_{os.path.splitext(filename)[0]}.png" class="preview-image">
-                        <a href="/output/Enhanced_{os.path.splitext(filename)[0]}.png" download>
-                            <div class="download"><button class="custom-file-upload">Download</button></div>
-                        </a>
                     </div>
                 """
 
@@ -441,10 +441,10 @@ def generate_html(image_previews, restored_previews, num_uploaded, show_download
             }}
 
             .file-drop-area {{
-                width: 90%;
                 height: 150px;
                 padding: 20px;
                 font-size: 18px;
+                width: 70%;
             }}
 
             input[type="range"] {{
@@ -453,20 +453,46 @@ def generate_html(image_previews, restored_previews, num_uploaded, show_download
 
             button[type="submit"], button[type="button"] {{
                 padding: 8px 16px;
-                font-size: 16px;
+                font-size: 18px;
             }}
 
             .preview-image {{
-                height: 200px;
-                width: 200px;
+                height: 350px;
+                width: 350px;
             }}
 
             .image-container {{
                 width: 90%;
+                margin: auto;
             }}
 
             .main-image-container {{
                 flex-direction: column;
+            }}
+
+            .letter-spacing{{
+                letter-spacing: 1px;
+            }}
+            .letter-spacing:hover,
+            .letter-spacing.focus,
+            .letter-spacing:active{{
+                letter-spacing: 1px;
+            }}
+
+            .uploaded-images, .restored-images{{
+                min-height: fit-content;
+            }}
+
+            .progress-container{{
+                width: 70%;
+            }}
+
+            .progress-bar{{
+                height: 10px;
+            }}
+
+            .text{{
+                font-size: 20px;
             }}
         }}
 
@@ -483,6 +509,7 @@ def generate_html(image_previews, restored_previews, num_uploaded, show_download
                 height: 100px;
                 padding: 10px;
                 font-size: 14px;
+                width: 70%;
             }}
 
             input[type="range"] {{
@@ -491,16 +518,42 @@ def generate_html(image_previews, restored_previews, num_uploaded, show_download
 
             button[type="submit"], button[type="button"] {{
                 padding: 6px 12px;
-                font-size: 14px;
+                font-size: 18px;
             }}
 
             .preview-image {{
-                height: 150px;
-                width: 150px;
+                height: 350px;
+                width: 350px;
             }}
 
             .image-container {{
-                width: 80%;
+                width: 95%;
+                margin: auto;
+            }}
+
+            .text{{
+                font-size:18px;
+            }}
+
+            .letter-spacing{{
+                letter-spacing: 1px;
+            }}
+            .letter-spacing:hover,
+            .letter-spacing.focus,
+            .letter-spacing:active{{
+                letter-spacing: 1px;
+            }}
+
+            .uploaded-images, .restored-images{{
+                min-height: fit-content;
+            }}
+
+            .progress-container{{
+                width: 70%;
+            }}
+
+            .progress-bar{{
+                height: 10px;
             }}
         }}
     </style>

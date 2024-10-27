@@ -64,6 +64,7 @@ def index():
         num_uploaded = len(uploaded_files)
 
         if uploaded_files:
+            session['uploaded_files'] = []
             for uploaded_file in uploaded_files:
                 filename = secure_filename(uploaded_file.filename)
                 input_path = os.path.join(UPLOAD_FOLDER, filename)
@@ -101,6 +102,9 @@ def index():
                         <div class="remove"><button class="remove-button custom-file-upload" onclick="removeImage('{filename}')">Remove</button></div>
                     </div>
                 """
+
+                # Store the filename in the session
+                session['uploaded_files'].append(output_path)
 
             if num_uploaded > 1:
                 show_download_all = True
@@ -150,7 +154,7 @@ def download_all():
     zip_path = os.path.join(OUTPUT_FOLDER, zip_filename)
 
     with zipfile.ZipFile(zip_path, 'w') as zipf:
-        for file in glob.glob(os.path.join(OUTPUT_FOLDER, "Enhanced_*")):
+        for file in session.get('uploaded_files', []):
             zipf.write(file, os.path.basename(file))
 
     return send_from_directory(OUTPUT_FOLDER, zip_filename, as_attachment=True)
@@ -332,7 +336,7 @@ def generate_html(image_previews, restored_previews, num_uploaded, show_download
             transition: transform 300ms ease-in;
         }}
 
-        .preview-image:hover,
+                .preview-image:hover,
         .preview-image:active,
         .preview-image:focus {{
             transform: scale(1.05)
@@ -373,12 +377,11 @@ def generate_html(image_previews, restored_previews, num_uploaded, show_download
         .uploaded-images, .restored-images {{
             display: flex;
             flex-wrap:wrap;
-            flex-dorection:row;
+            flex-direction:row;
             align-items: flex-start;
             justify-content: center;
             margin: 25px 0px;
             border:1px solid white;
-            min-height:1000px;
         }}
 
         .image-container {{
@@ -479,10 +482,6 @@ def generate_html(image_previews, restored_previews, num_uploaded, show_download
                 letter-spacing: 1px;
             }}
 
-            .uploaded-images, .restored-images{{
-                min-height: fit-content;
-            }}
-
             .progress-container{{
                 width: 70%;
             }}
@@ -544,10 +543,6 @@ def generate_html(image_previews, restored_previews, num_uploaded, show_download
                 letter-spacing: 1px;
             }}
 
-            .uploaded-images, .restored-images{{
-                min-height: fit-content;
-            }}
-
             .progress-container{{
                 width: 70%;
             }}
@@ -561,7 +556,7 @@ def generate_html(image_previews, restored_previews, num_uploaded, show_download
     <body>
         <div class="container">
             <h1 class="letter-spacing">GFPGAN Image Enhancement</h1>
-            <h2 id="uploaded-count" class="letter-spacing">{num_uploaded} {uploaded_text}</h2>
+            <h2 id="uploaded-count" class="letter-spacing">{{num_uploaded}} {{uploaded_text}}</h2>
 
             <form id="upload-form" method="POST" enctype="multipart/form-data">
             <label for="upscale_factor" class="text letter-spacing">Select Upscaling Factor (1X-4X):</label>
@@ -595,16 +590,16 @@ def generate_html(image_previews, restored_previews, num_uploaded, show_download
         <div class="main-image-container">
         <div class="image-container">
            <!-- Preview Images -->
-                <div class="title"><p class="text letter-spacing">Uploaded Images</p></div>
-            <div class="uploaded-images">
-                {image_previews}
+                <div class="title"><p class="text letter-spacing">Enhanced Images</p></div>
+            <div class="restored-images">
+                {restored_previews}
             </div>
          </div>
 
         <div class="image-container">
-                <div class="title"><p class="text letter-spacing">Enhanced Images</p></div>
-            <div class="restored-images">
-                {restored_previews}
+                <div class="title"><p class="text letter-spacing">Uploaded Images</p></div>
+            <div class="uploaded-images">
+                {image_previews}
             </div>
         </div>
     </div>

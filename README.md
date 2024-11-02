@@ -50,23 +50,8 @@
     # Install Real-ESRGAN
     pip install realesrgan
     ```
-5. For one click run
-    Create a new GFPGAN.bat Batch File on your GFPGAN directory using the script given below:
 
-    ```console
-    @echo off
-
-    :: Activate the conda environment for GFPGAN
-    CALL "C:\ProgramData\miniconda3\Scripts\activate.bat" GFPGAN
-
-    :: Navigate to the GFPGAN directory (Change path accroding to yourself)
-    cd /D paht/to/your/GFPGAN-Web-Interface
-    
-    :: Run the GFPGAN web interface script
-    python GFPGAN.py   
-    ```
-
-## :zap: Quick Inference
+    ## :zap: Quick Inference
 
 We take the v1.4 version.
 
@@ -82,3 +67,21 @@ wget https://github.com/TencentARC/GFPGAN/releases/download/v1.3.0/GFPGANv1.4.pt
 python GFPGAN.py
 ```
 Go to [localhost:5000](http://127.0.0.1:5000)
+
+**For one click run**
+    Create a new GFPGAN.bat Batch File on your GFPGAN directory using the script given below:
+
+    ```console
+    @echo off
+
+    :: Activate the conda environment for GFPGAN
+    CALL "C:\ProgramData\miniconda3\Scripts\activate.bat" GFPGAN
+
+    :: Navigate to the GFPGAN directory (Change path accroding to yourself)
+    cd /D paht/to/your/GFPGAN-Web-Interface
+    
+    :: Run the GFPGAN web interface script
+    python GFPGAN.py   
+    ```
+
+

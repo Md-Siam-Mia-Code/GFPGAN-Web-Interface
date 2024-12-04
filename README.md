@@ -32,23 +32,13 @@
 4. Install dependent packages
 
     ```bash
-    # Install Flask
-    pip install flask
-    
-    # Install Basicsr
-    pip install basicsr
-
-    # Install Facexlib
-    pip install facexlib
 
     # Install Requirments
     pip install -r requirements.txt
 
     # Setup
     python setup.py develop
-    
-    # Install Real-ESRGAN
-    pip install realesrgan
+
     ```
 
     ## :zap: Quick Inference
